@@ -1,0 +1,29 @@
+.col-lg-3.col-md-3.col-sm-3
+  .well
+    .row
+      .col-lg-6.col-md-6.col-sm-6
+        h4 About
+        p shun [0xBADDCAFE]
+      .col-lg-6.col-md-6.col-sm-6
+        img.img-responsive.img-thumbnail src="/images/prof.png"
+  .well
+    h4 Tags
+    ul.list-unstyled
+      - blog.tags.each do |tag, articles|
+        li
+          = link_to tag, tag_path(tag)
+          |  (
+          = articles.size
+          | )
+  .well
+    h4 By year
+    ol
+      - blog.articles.group_by {|a| a.date.year }.each do |year, articles|
+        li
+          = link_to year, blog_year_path(year)
+          |  (
+          = articles.size
+          | )
+  / .well
+  /   h4 Side Widget Well
+  /   p Bootstrap's default well for sidebar

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Uninitialized Log</title>
+  <subtitle>Description: TBD</subtitle>
+  <id>http://0xBADDCAFE.github.io</id>
+  <link href="http://0xBADDCAFE.github.io"/>
+  <link href="http://0xBADDCAFE.github.io/feed.xml" rel="self"/>
+  <updated>2015-02-27T03:32:00Z</updated>
+  <author>
+    <name>shun [0xBADDCAFE]</name>
+  </author>
+  <entry>
+    <title>blog 作った</title>
+    <link rel="alternate" href="http://0xBADDCAFE.github.io/2015/02/27/tukutta/"/>
+    <id>http://0xBADDCAFE.github.io/2015/02/27/tukutta/</id>
+    <published>2015-02-27T03:32:00Z</published>
+    <updated>2015-02-27T12:34:18+09:00</updated>
+    <author>
+      <name>Article Author</name>
+    </author>
+    <content type="html">&lt;p&gt;環境が変わるというのがあり、時間もあったので blog を作成した。とりあえず定期的
+にアウトプットするきっかけにしたい。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;
+
+&lt;p&gt;この blog 自体は middleman で作ったんだけど、その内容についてでもまず記事にして
+みたい。ruby/middleman/bootstrap のいずれにも精通してなかったので普通はつまづか
+なさそうなところでつまづきまくったので可能な限り細かく起こしてみる予定。&lt;/p&gt;
+</content>
+  </entry>
+</feed>
