@@ -165,12 +165,6 @@ configure :build do
 
   # Or use a different image path
   # set :http_prefix, "/Content/images/"
-
-  # リポジトリ名を host に設定しておく
-  # こうすることで stylesheet_link_tag などで展開されるパスが
-  # /test-middleman/stylesheets/normalize.css
-  # のようになる
-  activate :asset_host, :host => "/0xbaddcafe.github.io"
 end
 
 ###
