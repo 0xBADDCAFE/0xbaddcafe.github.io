@@ -91,7 +91,6 @@ GEM
       ffi (>= 0.5.0)
     rb-kqueue (0.2.2)
       ffi (>= 0.5.0)
-    redcarpet (3.1.1)
     sass (3.2.19)
     slim (2.0.2)
       temple (~> 0.6.6)
@@ -121,11 +120,11 @@ PLATFORMS
 
 DEPENDENCIES
   builder (~> 3.0)
+  kramdown
   middleman (~> 3.2.2)
   middleman-blog (~> 3.5.1)
   middleman-deploy (~> 0.1.4)
   middleman-livereload (~> 3.1.0)
   middleman-target (~> 0.0.6)
   nokogiri (~> 1.6.1)
-  redcarpet (~> 3.1.1)
   slim (~> 2.0.2)
