@@ -8,7 +8,7 @@ D & D で flashing 出来なかった時の覚書。
 
 genymotion を立ち上げておく。
 
-```shell:
+```
 ❯ cd /Applications/Genymotion.app/Contents/MacOS/player.app/Contents/MacOS/tools
 ❯ ./adb push ~/Downloads/Genymotion-ARM-Translation_v1.1.zip /sdcard/Download
 ❯ ./adb push ~/Downloads/gapps-kk-20140105-signed.zip /sdcard/Download
