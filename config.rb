@@ -62,8 +62,8 @@ Slim::Engine.set_default_options :shortcut => {
 }
 
 # Markdown settings 
-set :markdown, :tables => true, :autolink => true, :gh_blockcode => true, :fenced_code_blocks => true, :with_toc_data => true
 set :markdown_engine, :kramdown
+set :markdown, :tables => true, :autolink => true, :gh_blockcode => true, :fenced_code_blocks => true, :with_toc_data => true, :input => "GFM"
 
 # Per-page layout changes:
 #
