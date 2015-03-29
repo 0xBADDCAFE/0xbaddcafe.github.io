@@ -99,6 +99,7 @@ GEM
       ffi (>= 0.5.0)
     rb-kqueue (0.2.2)
       ffi (>= 0.5.0)
+    redcarpet (3.1.1)
     sass (3.2.19)
     slim (2.0.2)
       temple (~> 0.6.6)
@@ -136,5 +137,6 @@ DEPENDENCIES
   middleman-syntax
   middleman-target (~> 0.0.6)
   nokogiri (~> 1.6.1)
+  redcarpet (~> 3.1.1)
   rouge!
   slim (~> 2.0.2)

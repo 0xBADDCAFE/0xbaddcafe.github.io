@@ -98,7 +98,7 @@ activate :directory_indexes
 activate :livereload
 
 # enable syntax highlighting
-activate :syntax, :line_numbers => true
+# activate :syntax, :line_numbers => true
 
 # Methods defined in the helpers block are available in templates
 # helpers do
