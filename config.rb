@@ -63,7 +63,9 @@ Slim::Engine.set_default_options :shortcut => {
 
 # Markdown settings 
 set :markdown_engine, :kramdown
-set :markdown, :tables => true, :autolink => true, :gh_blockcode => true, :fenced_code_blocks => true, :with_toc_data => true, :input => "GFM"
+set :markdown, :input => "GFM"
+# set :markdown_engine, :redcarpet
+# set :markdown, :tables => true, :autolink => true, :gh_blockcode => true, :fenced_code_blocks => true, :with_toc_data => true, :smartypants => true
 
 # Per-page layout changes:
 #
@@ -94,6 +96,9 @@ activate :directory_indexes
 
 # Reload the browser automatically whenever files change
 activate :livereload
+
+# enable syntax highlighting
+activate :syntax, :line_numbers => true
 
 # Methods defined in the helpers block are available in templates
 # helpers do

@@ -1,3 +1,9 @@
+GIT
+  remote: git://github.com/jayferd/rouge.git
+  revision: a6027653c0bc63b845dfbd5b19fc0d73e3ae066a
+  specs:
+    rouge (1.8.0)
+
 GEM
   remote: http://rubygems.org/
   specs:
@@ -71,6 +77,8 @@ GEM
       sprockets (~> 2.2)
       sprockets-helpers (~> 1.1.0)
       sprockets-sass (~> 1.0.0)
+    middleman-syntax (2.0.0)
+      middleman-core (~> 3.2)
     middleman-target (0.0.6)
       middleman (>= 3.0)
     mini_portile (0.5.3)
@@ -125,6 +133,8 @@ DEPENDENCIES
   middleman-blog (~> 3.5.1)
   middleman-deploy (~> 0.1.4)
   middleman-livereload (~> 3.1.0)
+  middleman-syntax
   middleman-target (~> 0.0.6)
   nokogiri (~> 1.6.1)
+  rouge!
   slim (~> 2.0.2)
