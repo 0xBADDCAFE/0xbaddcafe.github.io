@@ -42,20 +42,20 @@ page "/sitemap.xml", layout: false
 # end
 
 # Change Compass configuration
-# config :development do
+configure :development do
   compass_config do |config|
     config.sass_options = {:debug_info => true}
   end
-# end
+end
 
 ###
 # Page options, layouts, aliases and proxies
 ###
 
 # Slim settings
-Slim::Engine.set_default_options :pretty => true
+Slim::Engine.set_options :pretty => true
 # shortcut
-Slim::Engine.set_default_options :shortcut => {
+Slim::Engine.set_options :shortcut => {
   '#' => {:tag => 'div', :attr => 'id'},
   '.' => {:tag => 'div', :attr => 'class'},
   '&' => {:tag => 'input', :attr => 'type'}
