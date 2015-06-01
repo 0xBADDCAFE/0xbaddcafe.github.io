@@ -1,7 +1,7 @@
 ---
 title: ref.vim (+refe2) で ruby のマニュアルを参照する
 date: 2015-03-29 21:51 JST
-tags: vim ruby
+tags: vim,ruby
 ---
 
 ちまちま ruby を書きだしていい加減環境をととのえないと馬鹿らしいと感じたので vim-endwise とか入れたりしてたんだけど、ref.vim を入れる際にしょうもない詰まり方をしたので覚え書きする。
@@ -16,7 +16,7 @@ refe2 の導入
 ref.vim に同梱されているソースは refe のものらしく、今設定無しで動いているのは ri だったのでこういう自体になってるっぽかったので、refe を入れることにする。で、調べていくと今は refe2 を入れたほうがいいらしい。
 
 ```bash
-ruby install refe2
+gem install refe2
 rbenv rehash # if use rbenv
 ```
 
