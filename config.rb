@@ -126,15 +126,14 @@ set :theme_name, 'cyborg'
 set :css_dir, 'css'
 set :js_dir, 'js'
 set :images_dir, 'images'
+# set :fonts_dir, 'fonts' # Somehow can't read
 
-after_configuration do
-  @bower_config = JSON.parse(IO.read("#{root}/.bowerrc"))
-  Dir.glob(File.join("#{root}", @bower_config["directory"], "*", "fonts")) do |f|
-    sprockets.append_path f
-  end
-  sprockets.append_path File.join "#{root}", @bower_config["directory"]
+@bower_config = JSON.parse(IO.read("#{root}/.bowerrc"))
+Dir.glob(File.join("#{root}", @bower_config["directory"], "*", "fonts")) do |f|
+  sprockets.append_path f
 end
-
+p File.join "#{root}", @bower_config["directory"]
+sprockets.append_path File.join "#{root}", @bower_config["directory"]
 
 ###
 # Target settings
