@@ -98,7 +98,10 @@ activate :directory_indexes
 activate :livereload
 
 # enable syntax highlighting
-# activate :syntax, :line_numbers => true
+activate :syntax
+# Can't use rouge options because of styles are broken.
+# if use highlight theme, edit source/css/highlight.css.erb.
+# activate :syntax, :line_numbers => true, :inline_theme => 'github'
 
 # Methods defined in the helpers block are available in templates
 # helpers do
