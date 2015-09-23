@@ -6,6 +6,8 @@ tags:
 
 はい
 
+READMORE
+
 ```
 git init
 openssl pkcs12 -in mycert.p12 -nocerts -out mycert.key -nodes
