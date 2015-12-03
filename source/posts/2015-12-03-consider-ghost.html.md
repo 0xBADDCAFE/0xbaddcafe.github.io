@@ -1,0 +1,11 @@
+---
+title: consider-ghost
+date: 2015-12-03 11:02 JST
+tags: misc
+---
+
+ブログ書く度に環境の構築からやるの不毛な感じする。
+
+今のこの blog は middleman でやっていて、markdown さらっと書いて deploy するだけで更新出来ていいんだけどちょっと弄ろうとすると途端に asset-pipeline の知識とかが必要になって詰まったり辛くなったりする。
+
+とりあえず blog が書きたいだけなら ghost 使ってみるのも良さそうなんだけどどうなんだろう。
