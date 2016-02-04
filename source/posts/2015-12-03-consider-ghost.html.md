@@ -1,5 +1,5 @@
 ---
-title: consider-ghost
+title: ghost へ移行するかどうか
 date: 2015-12-03 11:02 JST
 tags: misc
 ---
