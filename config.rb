@@ -135,7 +135,6 @@ set :images_dir, 'images'
 Dir.glob(File.join("#{root}", @bower_config["directory"], "*", "fonts")) do |f|
   sprockets.append_path f
 end
-p File.join "#{root}", @bower_config["directory"]
 sprockets.append_path File.join "#{root}", @bower_config["directory"]
 
 ###
