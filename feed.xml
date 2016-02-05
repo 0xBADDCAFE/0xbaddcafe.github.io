@@ -89,7 +89,7 @@ navbar がうまく展開されなかったのを直したりしてやっとそ�
     <link rel="alternate" href="http://0xBADDCAFE.github.io/2015/03/29/vim-ref-refe/"/>
     <id>http://0xBADDCAFE.github.io/2015/03/29/vim-ref-refe/</id>
     <published>2015-03-29T21:51:00+09:00</published>
-    <updated>2016-02-04T15:18:13+09:00</updated>
+    <updated>2016-02-05T11:42:55+09:00</updated>
     <author>
       <name>Article Author</name>
     </author>
@@ -115,7 +115,7 @@ refe Array
 
 &lt;p&gt;うまくいっていれば日本語でリファレンスが表示される。&lt;/p&gt;
 
-&lt;h2 id="vimref-"&gt;vim.ref の導入&lt;/h2&gt;
+&lt;h2 id="refvim-"&gt;ref.vim の導入&lt;/h2&gt;
 
 &lt;p&gt;と言っても上で書いた通り、先に導入してしまったので特に書くことは無い。みんな大好き neobundle を使いましょうという感じ。&lt;/p&gt;
 
