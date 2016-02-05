@@ -61,6 +61,12 @@
     <changefreq>daily</changefreq>
   </url>
   <url>
+    <loc>http://0xBADDCAFE.github.io/2016/02/05/deploy-gitconfig/</loc>
+    <lastmod>2016-02-05</lastmod>
+    <priority>0.6</priority>
+    <changefreq>daily</changefreq>
+  </url>
+  <url>
     <loc>http://0xBADDCAFE.github.io/posts/examples/even-example-article/</loc>
     <lastmod>2016-02-04</lastmod>
     <priority>0.7</priority>
@@ -142,6 +148,12 @@
     <loc>http://0xBADDCAFE.github.io/2016/02/</loc>
     <lastmod>2016-02-04</lastmod>
     <priority>0.8</priority>
+    <changefreq>daily</changefreq>
+  </url>
+  <url>
+    <loc>http://0xBADDCAFE.github.io/2016/02/05/</loc>
+    <lastmod>2016-02-04</lastmod>
+    <priority>0.7</priority>
     <changefreq>daily</changefreq>
   </url>
   <url>

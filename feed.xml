@@ -5,10 +5,26 @@
   <id>http://0xBADDCAFE.github.io</id>
   <link href="http://0xBADDCAFE.github.io"/>
   <link href="http://0xBADDCAFE.github.io/feed.xml" rel="self"/>
-  <updated>2016-02-04T17:51:00+09:00</updated>
+  <updated>2016-02-05T11:00:00+09:00</updated>
   <author>
     <name>shun [0xBADDCAFE]</name>
   </author>
+  <entry>
+    <title>middleman deploy 時に使われる git の config</title>
+    <link rel="alternate" href="http://0xBADDCAFE.github.io/2016/02/05/deploy-gitconfig/"/>
+    <id>http://0xBADDCAFE.github.io/2016/02/05/deploy-gitconfig/</id>
+    <published>2016-02-05T11:00:00+09:00</published>
+    <updated>2016-02-05T11:06:53+09:00</updated>
+    <author>
+      <name>Article Author</name>
+    </author>
+    <content type="html">&lt;p&gt;middleman deploy は自動で指定したリポジトリへの push までやってくれるが、その為に build ディレクトリ配下を&lt;br /&gt;
+別リポジトリとして管理する。その為初回 deploy 時のソース側リポジトリの設定が build 側に残ったままとなる&lt;br /&gt;
+ことがある。&lt;/p&gt;
+
+&lt;p&gt;deploy.host を明示的に指定しないまま source 側のリモートを set-url のみで書き換えたりした際にハマる（ハマった）&lt;/p&gt;
+</content>
+  </entry>
   <entry>
     <title>ブログ整備した</title>
     <link rel="alternate" href="http://0xBADDCAFE.github.io/2016/02/04/blog-maintained/"/>
@@ -161,39 +177,6 @@ refe Array
 &lt;p&gt;&lt;a href="http://stackoverflow.com/questions/12694919/cropping-the-image-to-aspect-ratio-in-bootstrap-responsive-grid"&gt;css - Cropping the image to aspect ratio in bootstrap responsive grid - Stack Overflow&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;a href="http://qiita.com/suisho/items/3ad3c0eded587e432aa5"&gt;究極で軽量なlazyloader。lazysizes - Qiita&lt;/a&gt;&lt;/p&gt;
-</content>
-  </entry>
-  <entry>
-    <title>git で ssl クライアント証明書を利用する</title>
-    <link rel="alternate" href="http://0xBADDCAFE.github.io/2015/03/04/ssl-cert-git/"/>
-    <id>http://0xBADDCAFE.github.io/2015/03/04/ssl-cert-git/</id>
-    <published>2015-03-04T11:13:00+09:00</published>
-    <updated>2016-02-04T15:18:13+09:00</updated>
-    <author>
-      <name>Article Author</name>
-    </author>
-    <content type="html">&lt;p&gt;はい&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;
-
-&lt;pre class="highlight plaintext"&gt;&lt;code&gt;git init
-openssl pkcs12 -in mycert.p12 -nocerts -out mycert.key -nodes
-openssl pkcs12 -in mycert.p12 -clcerts -nokeys -out mycert.crt
-openssl pkcs12 -in mycert.p12 -cacerts -nokeys -out cacert.crt
-git config --local http.sslCert "/mycert.crt"
-git config --local http.sslKey "/mycert.key"
-git config --local http.sslCaInfo "/cacert.crt"
-# 証明書を追加するので無効化しない
-# git config --local http.sslVerify "false"
-git pull git pull 
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;まあこんなことするより ssh で繋ぐほうが楽。ssl で繋いだ。&lt;/p&gt;
-
-&lt;h2 id="section"&gt;参考&lt;/h2&gt;
-
-&lt;p&gt;[](http://www.wakoond.hu/2013/07/using-git-with-https-client-certificate.html)&lt;/p&gt;
-
 </content>
   </entry>
 </feed>
