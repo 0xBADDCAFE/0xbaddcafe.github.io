@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Uninitialized Log</title>
+  <subtitle>Description: TBD</subtitle>
+  <id>http://0xBADDCAFE.github.io</id>
+  <link href="http://0xBADDCAFE.github.io"/>
+  <link href="http://0xBADDCAFE.github.io/feed.xml" rel="self"/>
+  <updated>2016-02-04T17:51:00+09:00</updated>
+  <author>
+    <name>shun [0xBADDCAFE]</name>
+  </author>
+  <entry>
+    <title>ブログ整備した</title>
+    <link rel="alternate" href="http://0xBADDCAFE.github.io/2016/02/04/blog-maintained/"/>
+    <id>http://0xBADDCAFE.github.io/2016/02/04/blog-maintained/</id>
+    <published>2016-02-04T17:51:00+09:00</published>
+    <updated>2016-02-04T17:54:04+09:00</updated>
+    <author>
+      <name>Article Author</name>
+    </author>
+    <content type="html">&lt;p&gt;なんかドメイン失効したりしたけど結局買い戻したりしたし、このブログも syntax highlight が微妙だったり&lt;br /&gt;
+navbar がうまく展開されなかったのを直したりしてやっとそれなりになった。&lt;/p&gt;
+
+&lt;p&gt;だいたい 1 年くらい経ってるし記事も 10 も無いけどまあちまちまやっていきます。&lt;/p&gt;
+
+&lt;p&gt;もう思いきって YouTube とか貼り出そうかな。&lt;/p&gt;
+</content>
+  </entry>
+  <entry>
+    <title>ghost へ移行するかどうか</title>
+    <link rel="alternate" href="http://0xBADDCAFE.github.io/2015/12/03/consider-ghost/"/>
+    <id>http://0xBADDCAFE.github.io/2015/12/03/consider-ghost/</id>
+    <published>2015-12-03T11:02:00+09:00</published>
+    <updated>2016-02-04T15:18:13+09:00</updated>
+    <author>
+      <name>Article Author</name>
+    </author>
+    <content type="html">&lt;p&gt;ブログ書く度に環境の構築からやるの不毛な感じする。&lt;/p&gt;
+
+&lt;p&gt;今のこの blog は middleman でやっていて、markdown さらっと書いて deploy するだけで更新出来ていいんだけどちょっと弄ろうとすると途端に asset-pipeline の知識とかが必要になって詰まったり辛くなったりする。&lt;/p&gt;
+
+&lt;p&gt;とりあえず blog が書きたいだけなら ghost 使ってみるのも良さそうなんだけどどうなんだろう。&lt;/p&gt;
+</content>
+  </entry>
+  <entry>
+    <title>非同期処理から ListView を決まった順に追加する（のに付随した試行錯誤）</title>
+    <link rel="alternate" href="http://0xBADDCAFE.github.io/2015/04/12/async-add-listview/"/>
+    <id>http://0xBADDCAFE.github.io/2015/04/12/async-add-listview/</id>
+    <published>2015-04-12T15:54:00+09:00</published>
+    <updated>2016-02-04T15:18:13+09:00</updated>
+    <author>
+      <name>Article Author</name>
+    </author>
+    <content type="html">&lt;p&gt;android で Volley で引っぱってきたデータを順に ListView の Adapter に追加したいということがあって、但し Volley の処理は基本的に非同期でリスナーで行うのでそのまま追加すると順に入ってくれないということがあった。&lt;br /&gt;
+&lt;br /&gt;
+まず Volley で叩く API の為の key があって、追加したい要素数は分かっている。なので正解というか最終的な方法としては、Volley のリスナーの中で取得したデータをこの key と一緒に Map に詰めていって、key の数と Map の要素数の判定を全てのリスナーの中で行って一致した際（= 全ての非同期タスクの最後）に一括で adapter.add() するという形になった。&lt;/p&gt;
+
+&lt;p&gt;まあややこしく見えるので文で書くものではない。&lt;/p&gt;
+
+&lt;p&gt;で、やり口として不味かった方法もあった。&lt;/p&gt;
+
+&lt;p&gt;ひとつは、key をベースに先に adapter.add しておいて、それを書き替えるという方法。adapter にセットした List を変更する。これが一番筋が良く見えた、というか実際可能だと思うんだけど、set した List の変更を adapter に通知する為に notifyDataSetChanged() を呼ばないといけない。adapter の変更は通常 add や clear すると自動で更新されるものなので、notifyDataSetChanged() を呼ぶというのが気持ち悪く感じてやめた。&lt;/p&gt;
+
+&lt;p&gt;あとは &lt;a href="http://stackoverflow.com/questions/4075975/redraw-a-single-row-in-a-listview"&gt;Adapter がセットする View を直接書き替える方法&lt;/a&gt; を試したけど、これも adapter が変更されていないので、fragment が切り替わったりして再描画がかかると adapter の持ってるデータに表示が置き変わった。開いている間に一時的かつ動的に書き替えたい場合はいいかもしれない。&lt;/p&gt;
+
+&lt;p&gt;あとひとつ、取得したデータは別の用途でも用いるので JsonObjectArray に格納していたんだけど、これのサイズと key の数を比較して最初の方法をやろうとした。これがハマって、空のJsonObjectArray に index を指定して格納していっていて、例えば非同期で 4 つ目の key にあたる処理が最初に完了して、put(4, obj) とかした場合、1-3 が無くても要素数は 4 を返す。これを何も考えずやって nullpo しまくった。&lt;/p&gt;
+
+&lt;p&gt;とりあえず忘れそうなので自分だけ分かればいい程度に殴り書きした。&lt;/p&gt;
+</content>
+  </entry>
+  <entry>
+    <title>ref.vim (+refe2) で ruby のマニュアルを参照する</title>
+    <link rel="alternate" href="http://0xBADDCAFE.github.io/2015/03/29/vim-ref-refe/"/>
+    <id>http://0xBADDCAFE.github.io/2015/03/29/vim-ref-refe/</id>
+    <published>2015-03-29T21:51:00+09:00</published>
+    <updated>2016-02-04T15:18:13+09:00</updated>
+    <author>
+      <name>Article Author</name>
+    </author>
+    <content type="html">&lt;p&gt;ちまちま ruby を書きだしていい加減環境をととのえないと馬鹿らしいと感じたので vim-endwise とか入れたりしてたんだけど、ref.vim を入れる際にしょうもない詰まり方をしたので覚え書きする。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;
+
+&lt;h2 id="refe2-"&gt;refe2 の導入&lt;/h2&gt;
+
+&lt;p&gt;まあとりあえず doc とか雑に読んでみた感じ、ref.vim 単体でも動く感じはあったので入れてみた。リファレンスが表示されるものの外部コマンドを実行したような感じになってしまい、doc に載ってるリファレンスビューアが開いている感じがなかったのでググる。&lt;/p&gt;
+
+&lt;p&gt;ref.vim に同梱されているソースは refe のものらしく、今設定無しで動いているのは ri だったのでこういう自体になってるっぽかったので、refe を入れることにする。で、調べていくと今は refe2 を入れたほうがいいらしい。&lt;/p&gt;
+
+&lt;pre class="highlight shell"&gt;&lt;code&gt;gem install refe2
+rbenv rehash &lt;span class="c"&gt;# if use rbenv&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;ここで &lt;code&gt;refe Array&lt;/code&gt; とかしてもデータベースエラーとか吐くので何事かと思ったんだけど、bitclust コマンドでデータベースを作成しておく必要があるらしい。&lt;/p&gt;
+
+&lt;pre class="highlight shell"&gt;&lt;code&gt;bitclust setup
+refe Array
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;うまくいっていれば日本語でリファレンスが表示される。&lt;/p&gt;
+
+&lt;h2 id="vimref-"&gt;vim.ref の導入&lt;/h2&gt;
+
+&lt;p&gt;と言っても上で書いた通り、先に導入してしまったので特に書くことは無い。みんな大好き neobundle を使いましょうという感じ。&lt;/p&gt;
+
+&lt;p&gt;リファレンスの参照も特別な設定は (試した ubuntu 環境だと) 不要で、doc にある通りキーワード上で &lt;code&gt;K&lt;/code&gt; を押すだけでリファレンスビューアが開きハイライトされて見易いリファレンスが表示される。&lt;/p&gt;
+
+&lt;h2 id="section"&gt;便利ですね&lt;/h2&gt;
+
+&lt;p&gt;なんか ref.vim の導入記事は結構あって、その中に refe の導入も一緒に書いてあることがほとんどだったんだけどその refe の導入の情報が微妙に古いのか一発で動く手順がまとまってるいい記事が\無かったのでメモする (refe2 でなく refe を導入していたり、データベースの作成について触れていないとか)。&lt;/p&gt;
+
+&lt;h2 id="section-1"&gt;参考&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href="http://qiita.com/jnchito/items/5141b3b01bced9f7f48f"&gt;脱初心者を目指すVimmerにオススメしたいVimプラグインや.vimrcの設定 - Qiita&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href="http://qiita.com/kuranari_tm/items/aa4434bde1e3b83b71b6"&gt;Vimからrefeを使うまでの覚書 - Qiita&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href="http://qiita.com/hara/items/6dcd3c2fed326ed33510"&gt;Ruby - refe で最新のるりまを参照する - Qiita&lt;/a&gt;&lt;/p&gt;
+
+</content>
+  </entry>
+  <entry>
+    <title>画像を指定のサイズで crop する、他</title>
+    <link rel="alternate" href="http://0xBADDCAFE.github.io/2015/03/27/crop-image/"/>
+    <id>http://0xBADDCAFE.github.io/2015/03/27/crop-image/</id>
+    <published>2015-03-27T20:09:00+09:00</published>
+    <updated>2016-02-04T15:18:13+09:00</updated>
+    <author>
+      <name>Article Author</name>
+    </author>
+    <content type="html">&lt;p&gt;bootstrap で画像を並べたサムネイルギャラリーを作ろうとして、画像のサイズが完全にバラバラでｱｲｴｴしたので調べた。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;
+
+&lt;pre class="highlight css"&gt;&lt;code&gt;&lt;span class="nc"&gt;.ratio&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;
+  &lt;span class="nl"&gt;position&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="nb"&gt;relative&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="nl"&gt;width&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="m"&gt;100%&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="nl"&gt;height&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="m"&gt;0&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="nl"&gt;padding-bottom&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="m"&gt;50%&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="c"&gt;/* % of width, defines aspect ratio */&lt;/span&gt;
+
+  &lt;span class="nl"&gt;background-repeat&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nb"&gt;no-repeat&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="nl"&gt;background-position&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nb"&gt;center&lt;/span&gt; &lt;span class="nb"&gt;center&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="nl"&gt;background-size&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;cover&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;背景に画像を指定して、&lt;code&gt;background-size: cover;&lt;/code&gt; でいい感じにするハックっぽい。調べてみると各所で &lt;code&gt;background-size: cover;&lt;/code&gt; 便利という声を見つけたので覚えておく。&lt;/p&gt;
+
+&lt;p&gt;あとこれ背景画像で指定しているので普通の Lazy load は使えない。いい感じの無いかなーと探したらやっぱりあった。フェードインアニメーションとかはやってくれないみたいだけどあれのせいで遅く感じる部分もあるので個人的には不要。&lt;/p&gt;
+
+&lt;pre class="highlight html"&gt;&lt;code&gt;&lt;span class="nt"&gt;&amp;lt;div&lt;/span&gt; &lt;span class="na"&gt;class=&lt;/span&gt;&lt;span class="s"&gt;"bg lazyload"&lt;/span&gt; &lt;span class="na"&gt;data-bg=&lt;/span&gt;&lt;span class="s"&gt;"http://cdn.qiita.com/assets/siteid-reverse-cd0519106e5814e34d402b3e821820cf.png"&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+
+&lt;span class="nt"&gt;&amp;lt;script &lt;/span&gt;&lt;span class="na"&gt;src=&lt;/span&gt;&lt;span class="s"&gt;"./lazysizes/plugins/unveilhooks/ls.unveilhooks.js"&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
+&lt;span class="nt"&gt;&amp;lt;script &lt;/span&gt;&lt;span class="na"&gt;src=&lt;/span&gt;&lt;span class="s"&gt;"./lazysizes/lazysizes.js"&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;どうでもいいけどこれコードのシンタックス汚いですね。気が向いたら変えよう。&lt;/p&gt;
+
+&lt;h2 id="section"&gt;参考&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href="http://stackoverflow.com/questions/12694919/cropping-the-image-to-aspect-ratio-in-bootstrap-responsive-grid"&gt;css - Cropping the image to aspect ratio in bootstrap responsive grid - Stack Overflow&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href="http://qiita.com/suisho/items/3ad3c0eded587e432aa5"&gt;究極で軽量なlazyloader。lazysizes - Qiita&lt;/a&gt;&lt;/p&gt;
+</content>
+  </entry>
+  <entry>
+    <title>git で ssl クライアント証明書を利用する</title>
+    <link rel="alternate" href="http://0xBADDCAFE.github.io/2015/03/04/ssl-cert-git/"/>
+    <id>http://0xBADDCAFE.github.io/2015/03/04/ssl-cert-git/</id>
+    <published>2015-03-04T11:13:00+09:00</published>
+    <updated>2016-02-04T15:18:13+09:00</updated>
+    <author>
+      <name>Article Author</name>
+    </author>
+    <content type="html">&lt;p&gt;はい&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;
+
+&lt;pre class="highlight plaintext"&gt;&lt;code&gt;git init
+openssl pkcs12 -in mycert.p12 -nocerts -out mycert.key -nodes
+openssl pkcs12 -in mycert.p12 -clcerts -nokeys -out mycert.crt
+openssl pkcs12 -in mycert.p12 -cacerts -nokeys -out cacert.crt
+git config --local http.sslCert "/mycert.crt"
+git config --local http.sslKey "/mycert.key"
+git config --local http.sslCaInfo "/cacert.crt"
+# 証明書を追加するので無効化しない
+# git config --local http.sslVerify "false"
+git pull git pull 
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;まあこんなことするより ssh で繋ぐほうが楽。ssl で繋いだ。&lt;/p&gt;
+
+&lt;h2 id="section"&gt;参考&lt;/h2&gt;
+
+&lt;p&gt;[](http://www.wakoond.hu/2013/07/using-git-with-https-client-certificate.html)&lt;/p&gt;
+
+</content>
+  </entry>
+</feed>

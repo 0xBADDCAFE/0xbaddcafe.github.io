@@ -1,0 +1,2 @@
+User-agent: *
+Sitemap: http://0xBADDCAFE.github.io/sitemap.xml
