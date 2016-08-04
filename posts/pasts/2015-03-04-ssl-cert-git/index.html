@@ -7,7 +7,7 @@
     <meta content="Description: TBD" name="description" />
     <link href="data:image/x-icon;base64,AAABAAEAEBAQAAEABAAoAQAAFgAAACgAAAAQAAAAIAAAAAEABAAAAAAAgAAAAAAAAAAAAAAAEAAAAAAAAABXU1AAv7OmAAAAAAD69/UA7efhAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIiIiIiIiIiIiIzMzMzIiIiIjNEREQzMiIiMzM0RAAyIiIzMzNEMDIiIjMzMzQwMiIiMzMzNAAyIiIzMzMzMzIiIjMzMzMiIiIiMzMzMyIiIiIhIhIhIiIiIhIhIhIiIiIiISISISIiIiISISISIiIiIiEiEiEiIiIiIiIiIiIiIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" rel="icon" type="image/" />
     <meta content="width=device-width, initial-scale=1" name="viewport" />
-    <link rel="alternate" type="application/atom+xml" title="Atom Feed" href="/feed.xml" /><!--[if lt IE 9]><script src="js/ie8.js"></script><![endif]--><link href="css/all.css" rel="stylesheet" /><link href="css/highlight.css" rel="stylesheet" />
+    <link rel="alternate" type="application/atom+xml" title="Atom Feed" href="/feed.xml" /><!--[if lt IE 9]><script src="../../../js/ie8.js"></script><![endif]--><link href="../../../css/all.css" rel="stylesheet" /><link href="../../../css/highlight.css" rel="stylesheet" />
   </head>
   <body>
     <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
@@ -60,8 +60,29 @@
             </ol>
           </div>
         </div>
-        <div class="col-lg-9 col-md-9 col-sm-9">
-          
+        <div class="col-lg-9 col-md-9 col-sm-9"><p>はい</p>
+
+<p>READMORE</p>
+
+<pre class="highlight plaintext"><code>git init
+openssl pkcs12 -in mycert.p12 -nocerts -out mycert.key -nodes
+openssl pkcs12 -in mycert.p12 -clcerts -nokeys -out mycert.crt
+openssl pkcs12 -in mycert.p12 -cacerts -nokeys -out cacert.crt
+git config --local http.sslCert "/mycert.crt"
+git config --local http.sslKey "/mycert.key"
+git config --local http.sslCaInfo "/cacert.crt"
+# 証明書を追加するので無効化しない
+# git config --local http.sslVerify "false"
+git pull git pull 
+</code></pre>
+
+<p>まあこんなことするより ssh で繋ぐほうが楽。ssl で繋いだ。</p>
+
+<h2 id="section">参考</h2>
+
+<p>[](http://www.wakoond.hu/2013/07/using-git-with-https-client-certificate.html)</p>
+
+
           <aside>
             <h3>
               Recent Articles
@@ -77,6 +98,6 @@
         </div>
       </div>
     </div>
-    <script src="js/all.js"></script>
+    <script src="../../../js/all.js"></script>
   </body>
 </html>

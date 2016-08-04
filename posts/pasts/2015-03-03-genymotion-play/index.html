@@ -7,7 +7,7 @@
     <meta content="Description: TBD" name="description" />
     <link href="data:image/x-icon;base64,AAABAAEAEBAQAAEABAAoAQAAFgAAACgAAAAQAAAAIAAAAAEABAAAAAAAgAAAAAAAAAAAAAAAEAAAAAAAAABXU1AAv7OmAAAAAAD69/UA7efhAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIiIiIiIiIiIiIzMzMzIiIiIjNEREQzMiIiMzM0RAAyIiIzMzNEMDIiIjMzMzQwMiIiMzMzNAAyIiIzMzMzMzIiIjMzMzMiIiIiMzMzMyIiIiIhIhIhIiIiIhIhIhIiIiIiISISISIiIiISISISIiIiIiEiEiEiIiIiIiIiIiIiIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" rel="icon" type="image/" />
     <meta content="width=device-width, initial-scale=1" name="viewport" />
-    <link rel="alternate" type="application/atom+xml" title="Atom Feed" href="/feed.xml" /><!--[if lt IE 9]><script src="js/ie8.js"></script><![endif]--><link href="css/all.css" rel="stylesheet" /><link href="css/highlight.css" rel="stylesheet" />
+    <link rel="alternate" type="application/atom+xml" title="Atom Feed" href="/feed.xml" /><!--[if lt IE 9]><script src="../../../js/ie8.js"></script><![endif]--><link href="../../../css/all.css" rel="stylesheet" /><link href="../../../css/highlight.css" rel="stylesheet" />
   </head>
   <body>
     <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
@@ -60,8 +60,20 @@
             </ol>
           </div>
         </div>
-        <div class="col-lg-9 col-md-9 col-sm-9">
-          
+        <div class="col-lg-9 col-md-9 col-sm-9"><p>D &amp; D で flashing 出来なかった時の覚書。</p>
+
+<p>genymotion を立ち上げておく。</p>
+
+<p>READMORE</p>
+
+<pre class="highlight plaintext"><code>❯ cd /Applications/Genymotion.app/Contents/MacOS/player.app/Contents/MacOS/tools
+❯ ./adb push ~/Downloads/Genymotion-ARM-Translation_v1.1.zip /sdcard/Download
+❯ ./adb push ~/Downloads/gapps-kk-20140105-signed.zip /sdcard/Download
+❯ ./adb shell flash-archive.sh /sdcard/Download/Genymotion-ARM-Translation_v1.1.zip
+# reboot player on genymotion
+❯ ./adb shell flash-archive.sh /sdcard/Download/gapps-kk-20140105-signed.zip
+</code></pre>
+
           <aside>
             <h3>
               Recent Articles
@@ -77,6 +89,6 @@
         </div>
       </div>
     </div>
-    <script src="js/all.js"></script>
+    <script src="../../../js/all.js"></script>
   </body>
 </html>
